@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Droplet, Mail, MapPin, Phone, Waves, MessageCircle } from "lucide-react"
+import { Droplet, Mail, MapPin, Phone, MessageCircle } from "lucide-react"
 
 export function GharTakWebsite() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -25,7 +25,7 @@ export function GharTakWebsite() {
       <header className="bg-blue-600 text-white py-4 shadow-lg">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold flex items-center">
-            GHAR TAK
+             GHAR TAK
           </h1>
           <nav>
             <ul className="flex space-x-4">
