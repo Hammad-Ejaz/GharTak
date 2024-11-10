@@ -15,7 +15,7 @@ export function GharTakWebsite() {
   }, [])
 
   const openWhatsApp = () => {
-    const phoneNumber = '03292182180' // Replace with your actual WhatsApp number
+    const phoneNumber = '+923292182180' // Replace with your actual WhatsApp number
     const whatsappUrl = `https://wa.me/${phoneNumber}`
     window.open(whatsappUrl, '_blank')
   }
@@ -25,7 +25,6 @@ export function GharTakWebsite() {
       <header className="bg-blue-600 text-white py-4 shadow-lg">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold flex items-center">
-            <Waves className="w-8 h-8 mr-2 animate-wave" />
             GHAR TAK
           </h1>
           <nav>
