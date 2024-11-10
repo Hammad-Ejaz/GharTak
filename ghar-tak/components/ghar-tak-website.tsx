@@ -15,7 +15,7 @@ export function GharTakWebsite() {
   }, [])
 
   const openWhatsApp = () => {
-    const phoneNumber = '+15551234567' // Replace with your actual WhatsApp number
+    const phoneNumber = '03292182180' // Replace with your actual WhatsApp number
     const whatsappUrl = `https://wa.me/${phoneNumber}`
     window.open(whatsappUrl, '_blank')
   }
@@ -108,8 +108,8 @@ Our water is carefully balanced to retain essential minerals, offering not only 
                 <h3 className="text-xl font-semibold mb-4 text-blue-600">Our Information</h3>
                 <div className="space-y-4">
                   {[
-                    { icon: MapPin, text: '123 Water Street, Cityville, State 12345' },
-                    { icon: Phone, text: '+1 (555) 123-4567' },
+                    { icon: MapPin, text: 'Jalal Park, Harbansepura Road Lahore, Pakistan' },
+                    { icon: Phone, text: '+92 329 218 218 0 ' },
                     { icon: Mail, text: 'info@ghartak.com' },
                   ].map(({ icon: Icon, text }, index) => (
                     <div key={text} className={`flex items-center text-gray-700 animate-fade-in-right animation-delay-${index * 200}`}>
