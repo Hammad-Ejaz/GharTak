@@ -5,13 +5,32 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Droplet, Mail, MapPin, Phone, MessageCircle } from "lucide-react"
+import { Droplet, Mail, MapPin, Phone, Waves, MessageCircle, Menu, X, ShoppingCart } from 'lucide-react'
+import Image from 'next/image'
+
 
 export function GharTakWebsite() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     setIsLoaded(true)
+    const handleScroll = () => {
+      const sections = ['hero', 'about', 'products', 'catalog', 'contact']
+      const scrollPosition = window.scrollY + 100
+
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
+          setActiveSection(section)
+          break
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const openWhatsApp = () => {
@@ -20,55 +39,102 @@ export function GharTakWebsite() {
     window.open(whatsappUrl, '_blank')
   }
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+
+  const catalogItems = [
+    { name: 'Pet Bottle (720g)', price: 1000, image: '/pet-bottle.png' },
+    { name: 'Tap', price: 150, image: '/tap.png' },
+    { name: 'Stand', price: 210, image: '/stand.png' },
+    { name: 'Water Pump', price: 700, image: '/pump.png' },
+    { name: 'Mini Dispenser', price: 900, image: '/dispenser.png' },
+    { name: 'Grip Handle', price: 170, image: '/grip-handle.png' },
+    { name: 'Bottle Handle', price: 120, image: '/bottle-handle.png' },
+  ]
+
   return (
     <div className={`min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-      <header className="bg-blue-600 text-white py-4 shadow-lg">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold flex items-center">
-             GHAR TAK
+      <header className="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-md z-50 transition-all duration-300 shadow-lg">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold flex items-center text-blue-600">
+            <Waves className="w-8 h-8 mr-2 animate-wave text-blue-500" />           
+            GHAR TAK
           </h1>
-          <nav>
-            <ul className="flex space-x-4">
-              <li><a href="#about" className="hover:underline transition-colors duration-300 hover:text-blue-200">About</a></li>
-              <li><a href="#products" className="hover:underline transition-colors duration-300 hover:text-blue-200">Products</a></li>
-              <li><a href="#contact" className="hover:underline transition-colors duration-300 hover:text-blue-200">Contact</a></li>
+          <nav className="hidden md:block">
+            <ul className="flex space-x-6">
+              {['about', 'products', 'catalog', 'contact'].map((section) => (
+                <li key={section}>
+                  <a
+                    href={`#${section}`}
+                    className={`text-lg font-medium transition-colors duration-300 ${
+                      activeSection === section ? 'text-blue-600' : 'text-gray-600 hover:text-blue-500'
+                    }`}
+                  >
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
+          <button className="md:hidden text-blue-600" onClick={toggleMenu}>
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+        {isMenuOpen && (
+          <div className="md:hidden bg-white py-4">
+            <ul className="flex flex-col items-center space-y-4">
+              {['about', 'products', 'catalog', 'contact'].map((section) => (
+                <li key={section}>
+                  <a
+                    href={`#${section}`}
+                    className={`text-lg font-medium transition-colors duration-300 ${
+                      activeSection === section ? 'text-blue-600' : 'text-gray-600 hover:text-blue-500'
+                    }`}
+                    onClick={toggleMenu}
+                  >
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </header>
 
-      <main className="flex-grow">
-        <section className="bg-blue-500 text-white py-20 relative overflow-hidden">
+      <main className="flex-grow pt-16">
+        <section id="hero" className="bg-blue-600 text-white py-20 md:py-32 relative overflow-hidden">
           <div className="container mx-auto px-4 text-center relative z-10">
-            <h2 className="text-4xl font-bold mb-4 animate-fade-in-up">Pure Water, Delivered to Your Doorstep</h2>
-            <p className="text-xl mb-8 animate-fade-in-up animation-delay-300">Experience the freshness of filtered and mineral water with GHAR TAK</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">Pure Water, Delivered to Your Doorstep</h2>
+            <p className="text-xl mb-10 animate-fade-in-up animation-delay-300 max-w-2xl mx-auto">Experience the freshness of filtered and mineral water with GHAR TAK, your trusted partner in hydration and health.</p>
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Button size="lg" onClick={openWhatsApp} className="bg-white text-blue-600 hover:bg-blue-100 transition-colors duration-300 animate-fade-in-up animation-delay-600">
+                <ShoppingCart className="w-5 h-5 mr-2" />
                 Order Now
               </Button>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-white" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0, 0 100%)' }}></div>
-          <div className="absolute top-0 left-0 right-0 bottom-0 opacity-10">
-            <div className="absolute inset-0 bg-[url('/placeholder.svg?height=400&width=800')] bg-repeat rotate-45 scale-150 animate-water-flow"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-16 md:h-32 bg-white" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0, 0 100%, 0 100%)' }}></div>
+          <div className="absolute top-0 left-0 right-0 bottom-0">
+            <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=1200')] bg-cover bg-center opacity-10 animate-water-flow"></div>
           </div>
         </section>
 
-        <section id="about" className="py-20">
+        <section id="about" className="py-20 md:py-32">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-blue-600">About Us</h2>
-            <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-blue-600">About Us</h2>
+            <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
               <p className="text-lg text-gray-700 leading-relaxed">
-              GHAR TAK is dedicated to delivering the purest, high-quality filtered and mineral water directly to homes and businesses. Our state-of-the-art purification system centers around a top-tier RO (Reverse Osmosis) plant, a technology known for its unparalleled efficiency in removing impurities and contaminants. By filtering out dissolved solids, harmful chemicals, and unwanted particles, our RO plant produces water that meets the highest standards of purity and taste.
-Our water is carefully balanced to retain essential minerals, offering not only refreshing but also health-enhancing hydration. With GHAR TAK, customers can trust that every drop of water is clean, safe, and satisfying. Our mission is to support health and wellness through our reliable, efficient delivery service, ensuring that pure, great-tasting water is always within reach at your doorstep
+                GHAR TAK is committed to providing high-quality filtered and mineral water to homes and businesses. 
+                With our state-of-the-art purification systems and efficient delivery service, we ensure that you 
+                always have access to clean, refreshing water. Our mission is to promote health and hydration 
+                through pure, great-tasting water delivered right to your doorstep.
               </p>
             </div>
           </div>
         </section>
 
-        <section id="products" className="py-20 bg-blue-50">
+        <section id="products" className="py-20 md:py-32 bg-blue-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-blue-600">Our Products</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-blue-600">Our Products</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {['Filtered Water', 'Mineral Water', 'Alkaline Water'].map((product, index) => (
                 <Card key={product} className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
@@ -89,11 +155,40 @@ Our water is carefully balanced to retain essential minerals, offering not only 
           </div>
         </section>
 
-        <section id="contact" className="py-20 bg-white">
+        <section id="catalog" className="py-20 md:py-32 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-blue-600">Contact Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-blue-600">Product Catalog</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {catalogItems.map((item, index) => (
+                <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <CardContent className="p-4">
+                    <div className="relative w-full h-48 mb-4">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-lg"
+                      />
+                    </div>
+                    <h3 className="text-lg font-semibold text-blue-600 mb-2">{item.name}</h3>
+                    <p className="text-gray-700 font-bold">{item.price} PKR</p>
+                    <Button onClick={openWhatsApp} className="w-full mt-4 bg-blue-500 hover:bg-darkblue-600 text-white">
+                    <ShoppingCart className="w-5 h-5 mr-2" />
+                      Order Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="py-20 md:py-32 bg-blue-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-blue-600">Contact Us</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-blue-50 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
                 <h3 className="text-xl font-semibold mb-4 text-blue-600">Get in Touch</h3>
                 <form className="space-y-4">
                   <Input placeholder="Your Name" className="bg-white transition-all duration-300 focus:ring-2 focus:ring-blue-400" />
@@ -103,12 +198,12 @@ Our water is carefully balanced to retain essential minerals, offering not only 
                   <Button type="submit" className="bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-300">Send Message</Button>
                 </form>
               </div>
-              <div className="bg-blue-50 p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
                 <h3 className="text-xl font-semibold mb-4 text-blue-600">Our Information</h3>
                 <div className="space-y-4">
                   {[
                     { icon: MapPin, text: 'Jalal Park, Harbansepura Road Lahore, Pakistan' },
-                    { icon: Phone, text: '+92 329 218 218 0 ' },
+                    { icon: Phone, text: '+92 329 218 218 0'},
                     { icon: Mail, text: 'info@ghartak.com' },
                   ].map(({ icon: Icon, text }, index) => (
                     <div key={text} className={`flex items-center text-gray-700 animate-fade-in-right animation-delay-${index * 200}`}>
