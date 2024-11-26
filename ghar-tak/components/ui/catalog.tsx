@@ -7,7 +7,6 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ShoppingCart } from 'lucide-react'
-
 // Import Swiper styles
 import 'swiper/swiper-bundle.css'
 
@@ -31,13 +30,7 @@ export function Catalog() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  const openWhatsApp = () => {
-    const phoneNumber = '+923292182180' // Replace with your actual WhatsApp number
-    const whatsappUrl = `https://wa.me/${phoneNumber}`
-    window.open(whatsappUrl, '_blank')
-  }
-
+   
   const catalogItems = [
     { name: 'Pet Bottle (720g)', price: 1000, image: '/pet-bottle.png' },
     { name: 'Tap', price: 150, image: '/tap.png' },
@@ -47,6 +40,17 @@ export function Catalog() {
     { name: 'Grip Handle', price: 170, image: '/grip-handle.png' },
     { name: 'Bottle Handle', price: 120, image: '/bottle-handle.png' },
   ]
+  
+  const sendWhatsAppOrder = (item: { name: string; price: number; image: string }) => {
+    const phoneNumber = '+923292182180'; // Replace with your actual WhatsApp number
+    const message = encodeURIComponent(
+      `I would like to order:\n\nProduct: ${item.name}\nPrice: ${item.price} PKR\n\nPlease confirm my order. Thank you!`
+    );
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+  
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <section id="catalog" className="py-20 md:py-32 bg-white">
@@ -76,7 +80,7 @@ export function Catalog() {
                   </div>
                   <h3 className="text-lg font-semibold text-blue-600 mb-2">{item.name}</h3>
                   <p className="text-gray-700 font-bold">{item.price} PKR</p>
-                  <Button onClick={openWhatsApp} className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white">
+                  <Button onClick={() => sendWhatsAppOrder(item)}  className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white">
                     <ShoppingCart className="w-5 h-5 mr-2" />
                     Order Now
                   </Button>
