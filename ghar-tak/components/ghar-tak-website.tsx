@@ -6,7 +6,7 @@ import { Features } from "@/components/ui/features"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Droplet, Mail, MapPin, Phone, Waves, MessageCircle, Menu, X, ShoppingCart ,Truck, Users, Leaf, DollarSign, Zap, ChevronDown  } from 'lucide-react'
+import { Droplet, Mail, MapPin, Phone, Waves, MessageCircle, Menu, X, ShoppingCart , Users, Leaf, DollarSign, Zap } from 'lucide-react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
