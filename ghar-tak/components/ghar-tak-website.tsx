@@ -48,15 +48,6 @@ export function GharTakWebsite() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
-  const catalogItems = [
-    { name: 'Pet Bottle (720g)', price: 1000, image: '/pet-bottle.png' },
-    { name: 'Tap', price: 150, image: '/tap.png' },
-    { name: 'Stand', price: 210, image: '/stand.png' },
-    { name: 'Water Pump', price: 700, image: '/pump.png' },
-    { name: 'Mini Dispenser', price: 900, image: '/dispenser.png' },
-    { name: 'Grip Handle', price: 170, image: '/grip-handle.png' },
-    { name: 'Bottle Handle', price: 120, image: '/bottle-handle.png' },
-  ]
   const fadeIsUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
