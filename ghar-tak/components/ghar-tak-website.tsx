@@ -3,12 +3,18 @@
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Features } from "@/components/ui/features"
+import { Catalog } from "@/components/ui/catalog"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Droplet, Mail, MapPin, Phone, Waves, MessageCircle, Menu, X, ShoppingCart , Users, Leaf, DollarSign, Zap } from 'lucide-react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/autoplay";
 
 export function GharTakWebsite() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -190,6 +196,7 @@ export function GharTakWebsite() {
             </div>
           </div>
         </section>
+        
         <section id="products" className="py-20 md:py-32 bg-blue-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-blue-600">Our Products</h2>
@@ -212,36 +219,7 @@ export function GharTakWebsite() {
             </div>
           </div>
         </section>
-
-        <section id="catalog" className="py-20 md:py-32 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-blue-600">Product Catalog</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-              {catalogItems.map((item, index) => (
-                <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                  <CardContent className="p-4">
-                    <div className="relative w-full h-48 mb-4">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        layout="fill"
-                        objectFit="cover"
-                        className="rounded-lg"
-                      />
-                    </div>
-                    <h3 className="text-lg font-semibold text-blue-600 mb-2">{item.name}</h3>
-                    <p className="text-gray-700 font-bold">{item.price} PKR</p>
-                    <Button onClick={openWhatsApp} className="w-full mt-4 bg-blue-500 hover:bg-darkblue-600 text-white">
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                      Order Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
+        <Catalog/>
         <section id="contact" className="py-20 md:py-32 bg-blue-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-blue-600">Contact Us</h2>
