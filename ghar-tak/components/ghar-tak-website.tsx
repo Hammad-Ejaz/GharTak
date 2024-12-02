@@ -7,7 +7,7 @@ import { Catalog } from "@/components/ui/catalog"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Droplet, Mail, MapPin, Phone, Waves, MessageCircle, Menu, X, ShoppingCart , Users, Leaf, DollarSign, Zap } from 'lucide-react'
+import { Droplet, Mail, MapPin, Phone, MessageCircle, Menu, X, ShoppingCart , Users, Leaf, DollarSign, Zap } from 'lucide-react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
