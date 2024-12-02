@@ -16,12 +16,6 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Ghar Tak",
   description: "This is Ghar Tak Webiste. Which provides water delivery services in pakistan",
-  icons: {
-    icon: [
-      { url: '/logo.png', sizes: 'any', type: 'image/png' },
-      { url: '/logo.png', type: 'image/png' }, // Optional, for different device sizes
-    ],
-  }
 };
 
 export default function RootLayout({

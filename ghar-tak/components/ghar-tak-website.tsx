@@ -55,11 +55,19 @@ export function GharTakWebsite() {
   return (
     <div className={`min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-white transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>   
       <header className="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-blur-md z-50 transition-all duration-300 shadow-lg">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          {/* Left-aligned Logo */}
           <h1 className="text-2xl font-bold flex items-center text-blue-600">
-            <Waves className="w-8 h-8 mr-2 animate-wave text-blue-500" />           
-            GHAR TAK
+            <Image
+              src="/logo.png"
+              alt="GHAR TAK Delivery Service"
+              width={150} 
+              height={150} 
+              className="object-contain rounded-lg"
+            />
           </h1>
+
+          {/* Right-aligned Navigation */}
           <nav className="hidden md:block">
             <ul className="flex space-x-6">
               {['about', 'products', 'catalog', 'contact'].map((section) => (
@@ -76,10 +84,12 @@ export function GharTakWebsite() {
               ))}
             </ul>
           </nav>
+
+          {/* Hamburger Menu for Mobile */}
           <button className="md:hidden text-blue-600" onClick={toggleMenu}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-        </div>
+      </div>
         {isMenuOpen && (
           <div className="md:hidden bg-white py-4">
             <ul className="flex flex-col items-center space-y-4">
@@ -88,7 +98,7 @@ export function GharTakWebsite() {
                   <a
                     href={`#${section}`}
                     className={`text-lg font-medium transition-colors duration-300 ${
-                      activeSection === section ? 'text-blue-600' : 'text-gray-600 hover:text-blue-500'
+                      activeSection === section ? 'text-blue-600' : 'text-gray-800 hover:text-blue-500'
                     }`}
                     onClick={toggleMenu}
                   >
@@ -124,7 +134,7 @@ export function GharTakWebsite() {
             <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=1200')] bg-cover bg-center opacity-10 animate-water-flow"></div>
           </div>
         </section>
-
+        
         <section id="about" className="py-20 md:py-32">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center text-blue-600">
