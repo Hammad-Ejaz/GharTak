@@ -159,6 +159,7 @@ export function GharTakWebsite() {
             </div>
           </div>
         </section>
+
         <section id="mission" className="py-20 md:py-32 bg-blue-50 md:mx-[7.5rem]">
             <h2 className="text-3xl md:text-4xl font-bold mb-8  text-center text-blue-600">Our Mission</h2>
             <Card className="bg-gradient-to-br items-center from-blue-500 to-blue-600 text-white p-8">
@@ -175,7 +176,9 @@ export function GharTakWebsite() {
               </CardContent>
             </Card>
         </section>
+        
         <Features/>
+                
         <section id="products" className="py-20 md:py-32 bg-blue-50">
         <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-blue-600">What Sets Us Apart</h2>
