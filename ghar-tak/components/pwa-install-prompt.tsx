@@ -3,33 +3,47 @@
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 
-let deferredPrompt: any;
+// Define the BeforeInstallPromptEvent interface
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
 
 export function PWAInstallPrompt() {
-  const [showInstallPrompt, setShowInstallPrompt] = useState(true);
+  const [showInstallPrompt, setShowInstallPrompt] = useState(true); // Update 1: Initial state remains false
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
 
   useEffect(() => {
-    window.addEventListener('beforeinstallprompt', (e) => {
+    const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
-      deferredPrompt = e;
-      setShowInstallPrompt(true);
-    });
+      if ('prompt' in e && 'userChoice' in e) {
+        setDeferredPrompt(e as BeforeInstallPromptEvent);
+        setShowInstallPrompt(true);
+      }
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
   }, []);
 
-  const handleInstallClick = () => {
-    setShowInstallPrompt(false);
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
+  const handleInstallClick = async () => { // Update 2: Updated handleInstallClick function
+    if (deferredPrompt) {
+      setShowInstallPrompt(false);
+      await deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the install prompt');
       } else {
         console.log('User dismissed the install prompt');
       }
-      deferredPrompt = null;
-    });
+      setDeferredPrompt(null);
+    }
   };
 
-  if (!showInstallPrompt) {
+  if (!showInstallPrompt || !deferredPrompt) { // Update 3: Modified conditional rendering
     return null;
   }
 
@@ -40,3 +54,4 @@ export function PWAInstallPrompt() {
     </div>
   );
 }
+

@@ -1,6 +1,6 @@
 {
-    "name": "GHAR TAK Water Supply",
-    "short_name": "GHAR TAK",
+    "name": "Ghar Tak",
+    "short_name": "GharTak",
     "description": "High-quality water delivery service in Pakistan",
     "start_url": "/",
     "display": "standalone",
