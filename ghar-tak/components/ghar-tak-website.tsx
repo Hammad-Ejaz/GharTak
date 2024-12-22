@@ -15,6 +15,7 @@ import { motion } from 'framer-motion'
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
+import { PWAInstallPrompt } from './pwa-install-prompt'
 
 export function GharTakWebsite() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -257,7 +258,7 @@ export function GharTakWebsite() {
           </div>
         </section>
       </main>
-
+      <PWAInstallPrompt />
       <footer className="bg-blue-600 text-white py-8">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; 2023 GHAR TAK. All rights reserved.</p>
