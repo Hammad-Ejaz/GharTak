@@ -22,9 +22,9 @@ export default function AboutUs() {
             </div>
             <div className="md:w-1/2">
               <p className="text-lg text-gray-700 leading-relaxed text-justify">
-                Welcome to GHAR TAK, your trusted partner in delivering top-quality water solutions to homes and businesses. At GHAR TAK, we believe water is more than just a necessity—it's a source of life, health, and vitality. With a steadfast commitment to excellence, we strive to provide not only clean and refreshing water but also a seamless and dependable delivery service that ensures your hydration needs are always met.
+                Welcome to GHAR TAK, your trusted partner in delivering top-quality water solutions to homes and businesses. At GHAR TAK, we believe water is more than just a necessity&mdash;it's a source of life, health, and vitality. With a steadfast commitment to excellence, we strive to provide not only clean and refreshing water but also a seamless and dependable delivery service that ensures your hydration needs are always met.
                 <br /><br />
-                Water is at the heart of what we do, and we are passionate about making pure, safe, and great-tasting water accessible to everyone. Our range of offerings includes high-quality filtered and mineral water, as well as a variety of water-related accessories such as dispensers, taps, and more. Whatever your water needs, GHAR TAK is here to deliver—literally and figuratively.
+                Water is at the heart of what we do, and we are passionate about making pure, safe, and great-tasting water accessible to everyone. Our range of offerings includes high-quality filtered and mineral water, as well as a variety of water-related accessories such as dispensers, taps, and more. Whatever your water needs, GHAR TAK is here to deliver&mdash;literally and figuratively.
               </p>
             </div>
           </div>
@@ -54,7 +54,7 @@ export default function AboutUs() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-blue-600">What Sets Us Apart</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
+            {[ 
               { icon: Users, title: "Customer-Centric Approach", description: "We place our customers at the center of everything we do, tailoring our services to meet your unique needs." },
               { icon: Leaf, title: "Sustainability Focus", description: "We actively promote sustainable practices, including recycling and reusing water bottles to reduce environmental impact." },
               { icon: DollarSign, title: "Affordable Pricing", description: "High quality doesn't have to come at a high cost. We offer competitive pricing without compromising on quality or service." },
@@ -95,4 +95,3 @@ export default function AboutUs() {
     </main>
   )
 }
-

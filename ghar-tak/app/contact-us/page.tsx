@@ -79,7 +79,7 @@ export default function ContactUs() {
           >
             <h2 className="text-2xl font-semibold mb-4 text-blue-600">We're Here to Help</h2>
             <p className="text-gray-600 mb-6">
-              At GHAR TAK, we're committed to providing you with the best water delivery service. 
+              At GHAR TAK, we&apos;re committed to providing you with the best water delivery service. 
               Whether you have questions, feedback, or need assistance, our team is ready to help.
             </p>
             <div className="space-y-4">
@@ -182,4 +182,3 @@ export default function ContactUs() {
     </div>
   )
 }
-

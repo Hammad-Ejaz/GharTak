@@ -7,8 +7,6 @@ import { ShoppingCart, Droplet } from 'lucide-react'
 import Image from 'next/image'
 
 export function Hero() {
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-  const [isClicked, setIsClicked] = useState(false)
   const splashControls = useAnimation()
 
   const openWhatsApp = () => {
@@ -19,7 +17,7 @@ export function Hero() {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY })
+      // Cursor position tracking removed as it's not used
     }
 
     window.addEventListener('mousemove', handleMouseMove)
@@ -27,7 +25,6 @@ export function Hero() {
   }, [])
 
   const handleClick = async (e: React.MouseEvent) => {
-    setIsClicked(true)
     const rect = e.currentTarget.getBoundingClientRect()
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
@@ -39,8 +36,6 @@ export function Hero() {
       y: y,
       transition: { duration: 0.5 }
     })
-
-    setIsClicked(false)
   }
 
   return (
