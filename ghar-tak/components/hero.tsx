@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { ShoppingCart, Droplet } from 'lucide-react'
