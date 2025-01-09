@@ -77,9 +77,9 @@ export default function ContactUs() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-semibold mb-4 text-blue-600">We're Here to Help</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-blue-600">We are Here to Help</h2>
             <p className="text-gray-600 mb-6">
-              At GHAR TAK, we&apos;re committed to providing you with the best water delivery service. 
+              At GHAR TAK, we are committed to providing you with the best water delivery service. 
               Whether you have questions, feedback, or need assistance, our team is ready to help.
             </p>
             <div className="space-y-4">

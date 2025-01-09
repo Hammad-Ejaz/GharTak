@@ -22,7 +22,7 @@ export default function AboutUs() {
             </div>
             <div className="md:w-1/2">
               <p className="text-lg text-gray-700 leading-relaxed text-justify">
-                Welcome to GHAR TAK, your trusted partner in delivering top-quality water solutions to homes and businesses. At GHAR TAK, we believe water is more than just a necessity&mdash;it's a source of life, health, and vitality. With a steadfast commitment to excellence, we strive to provide not only clean and refreshing water but also a seamless and dependable delivery service that ensures your hydration needs are always met.
+                Welcome to GHAR TAK, your trusted partner in delivering top-quality water solutions to homes and businesses. At GHAR TAK, we believe water is more than just a necessity it is a source of life, health, and vitality. With a steadfast commitment to excellence, we strive to provide not only clean and refreshing water but also a seamless and dependable delivery service that ensures your hydration needs are always met.
                 <br /><br />
                 Water is at the heart of what we do, and we are passionate about making pure, safe, and great-tasting water accessible to everyone. Our range of offerings includes high-quality filtered and mineral water, as well as a variety of water-related accessories such as dispensers, taps, and more. Whatever your water needs, GHAR TAK is here to deliver&mdash;literally and figuratively.
               </p>

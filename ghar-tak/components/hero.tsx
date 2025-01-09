@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { ShoppingCart, Droplet } from 'lucide-react'
@@ -14,15 +14,6 @@ export function Hero() {
     const whatsappUrl = `https://wa.me/${phoneNumber}`
     window.open(whatsappUrl, '_blank')
   }
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      // Cursor position tracking removed as it's not used
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
 
   const handleClick = async (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect()
